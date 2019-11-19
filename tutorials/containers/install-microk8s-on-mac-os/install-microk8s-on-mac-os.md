@@ -59,6 +59,12 @@ multipass exec microk8s-vm -- sudo snap install microk8s --classic
 multipass exec microk8s-vm -- sudo iptables -P FORWARD ACCEPT
 ```
 
+Grant the multipass user in the VM access to microk8s
+
+```bash
+multipass exec microk8s-vm -- sudo usermod -a -G microk8s multipass
+``` 
+ 
 positive
 : Make sure you reserve enough resources to host your deployments; above, we got 4GB of RAM and 40GB of hard disk. We also make sure packets to/from the pod network interface can be forwarded to/from the default interface.
 
